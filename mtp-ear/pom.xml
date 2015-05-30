@@ -13,6 +13,55 @@
     <groupId>mtp</groupId>
     <version>1.0-SNAPSHOT</version>
     <packaging>ear</packaging>
+    <name>mtp-ear</name>
 
+    <repositories>
+        <repository>
+            <id>vaadin-addons</id>
+            <url>http://maven.vaadin.com/vaadin-addons</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <dependency>
+            <groupId>mtp</groupId>
+            <artifactId>mtp-view</artifactId>
+            <version>1.0-SNAPSHOT</version>
+            <type>war</type>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-ear-plugin</artifactId>
+                <version>2.10</version>
+                <configuration>
+                    <defaultLibBundleDir>lib/</defaultLibBundleDir>
+                    <archive>
+                        <manifest>
+                            <addClasspath>true</addClasspath>
+                        </manifest>
+                    </archive>
+                    <generateApplicationXml>false</generateApplicationXml>
+                    <filtering>true</filtering>
+                    <modules>
+                        <webModule>
+                            <groupId>mtp</groupId>
+                            <artifactId>mtp-view</artifactId>
+                            <contextRoot>mtp</contextRoot>
+                        </webModule>
+                        <!--<ejbModule>-->
+                            <!--<groupId></groupId>-->
+                            <!--<artifactId></artifactId>-->
+                            <!--<bundleFileName></bundleFileName>-->
+                            <!--<unpack>true</unpack>-->
+                        <!--</ejbModule>-->
+                    </modules>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

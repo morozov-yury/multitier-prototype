@@ -9,6 +9,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mtp-view</artifactId>
+    <groupId>mtp</groupId>
     <packaging>war</packaging>
     <name>mtp-view</name>
 

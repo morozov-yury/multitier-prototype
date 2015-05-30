@@ -13,6 +13,7 @@
     <artifactId>mtp-service</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>ejb</packaging>
+    <name>mtp-service</name>
 
     <dependencies>
         <dependency>
