@@ -5,6 +5,7 @@ import javax.servlet.annotation.WebServlet;
 import com.vaadin.annotations.Theme;
 import com.vaadin.annotations.VaadinServletConfiguration;
 import com.vaadin.annotations.Widgetset;
+import com.vaadin.cdi.CDIUI;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.server.VaadinServlet;
 import com.vaadin.ui.Button;
@@ -16,6 +17,7 @@ import com.vaadin.ui.VerticalLayout;
 /**
  *
  */
+@CDIUI("")
 @Theme("mytheme")
 @Widgetset("mtp.MyAppWidgetset")
 public class MyUI extends UI {
@@ -34,11 +36,6 @@ public class MyUI extends UI {
             }
         });
         layout.addComponent(button);
-
     }
 
-    @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)
-    @VaadinServletConfiguration(ui = MyUI.class, productionMode = false)
-    public static class MyUIServlet extends VaadinServlet {
-    }
 }
