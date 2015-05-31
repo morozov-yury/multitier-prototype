@@ -4,10 +4,13 @@ import com.mtp.service.TestService;
 import com.vaadin.cdi.CDIView;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.ui.*;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.CustomComponent;
+import com.vaadin.ui.Label;
+import com.vaadin.ui.VerticalLayout;
 import mtp.MtpUI;
 
-import javax.inject.Inject;
+import javax.ejb.EJB;
 
 /**
  * Created by morozov.yury on 31.5.15.
@@ -17,7 +20,7 @@ public class MainView extends CustomComponent implements View {
 
     public static String NAME = "";
 
-    @Inject
+    @EJB
     private TestService testService;
 
     @Override
