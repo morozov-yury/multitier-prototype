@@ -10,7 +10,7 @@
     <packaging>pom</packaging>
 
     <modules>
-        <!--<module>mtp-service</module>-->
+        <module>mtp-service</module>
         <!--<module>mtp-dataaccess</module>-->
         <module>mtp-ear</module>
         <module>mtp-view</module>

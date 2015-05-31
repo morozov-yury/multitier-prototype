@@ -6,9 +6,9 @@
 
     <description>Description</description>
     <display-name>mtp-ear</display-name>
-    <!--<module>-->
-        <!--<ejb>mtp-service.jar</ejb>-->
-    <!--</module>-->
+    <module>
+        <ejb>mtp-service-1.0-SNAPSHOT.jar</ejb>
+    </module>
     <module>
         <web>
             <web-uri>mtp-view-1.0-SNAPSHOT.war</web-uri>
