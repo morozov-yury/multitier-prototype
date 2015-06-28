@@ -6,15 +6,22 @@
 
     <description>Description</description>
     <display-name>mtp-ear</display-name>
+
     <module>
         <ejb>mtp-service-1.0-SNAPSHOT.jar</ejb>
     </module>
+
+    <module>
+        <ejb>mtp-dataaccess-1.0-SNAPSHOT.jar</ejb>
+    </module>
+
     <module>
         <web>
             <web-uri>mtp-view-1.0-SNAPSHOT.war</web-uri>
             <context-root>mtp</context-root>
         </web>
     </module>
+
     <library-directory>lib/</library-directory>
 
 </application>

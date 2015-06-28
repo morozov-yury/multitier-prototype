@@ -1,7 +1,9 @@
 package com.mtp.service;
 
+import com.mtp.dao.impl.TestDao;
 import org.apache.logging.log4j.Logger;
 
+import javax.ejb.EJB;
 import javax.ejb.Remote;
 import javax.ejb.Singleton;
 import javax.inject.Inject;
@@ -17,10 +19,21 @@ public class TestService implements Serializable {
     @Inject
     private Logger logger;
 
+    @EJB
+    private TestDao testDao;
+
     public String getOK () {
         logger.error("Error message");
         logger.info("Info message");
         return "OK";
+    }
+
+    public String testDB () {
+        return testDao.testConnectionToDB();
+    }
+
+    public String getNodesWithProperty(String propertyName, int limit) {
+        return testDao.getNodesWithProperty(propertyName, limit);
     }
 
 }
