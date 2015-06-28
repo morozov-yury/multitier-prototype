@@ -16,7 +16,7 @@ import javax.ws.rs.core.MediaType;
 @Remote
 public class TestDao {
 
-    private static String SERVER_ROOT_URI = "http://localhost:7474/";
+    private static String SERVER_ROOT_URI = "http://localhost:7474/db/data/";
 
     public TestDao() {
 
@@ -38,12 +38,16 @@ public class TestDao {
     }
 
     public String getNodesWithProperty(String propertyName, int limit) {
+        String query = "MATCH (n) WHERE has(n." + propertyName + ") " +
+                "RETURN DISTINCT n " +
+                "LIMIT " + limit;
+
+        return performQuery(query);
+    }
+
+    private String performQuery (String query) {
         final String txUri = SERVER_ROOT_URI + "transaction/commit";
         WebResource resource = Client.create().resource( txUri );
-
-        String query = "MATCH (n) WHERE has(n." + propertyName + ") " +
-                "RETURN DISTINCT \"node\" as element, n.name AS name " +
-                "LIMIT " + limit;
 
         String payload = "{\"statements\" : [ {\"statement\" : \"" + query + "\"} ]}";
         ClientResponse response = resource

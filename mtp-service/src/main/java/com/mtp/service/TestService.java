@@ -23,9 +23,7 @@ public class TestService implements Serializable {
     private TestDao testDao;
 
     public String getOK () {
-        logger.error("Error message");
-        logger.info("Info message");
-        return "OK";
+        return "EJB layer is accessible";
     }
 
     public String testDB () {
