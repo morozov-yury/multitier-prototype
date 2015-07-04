@@ -1,4 +1,4 @@
-package com.mtp.dao.impl;
+package com.mtp.dataaccess.dao.impl;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
@@ -42,10 +42,10 @@ public class TestDao {
                 "RETURN DISTINCT n " +
                 "LIMIT " + limit;
 
-        return performQuery(query);
+        return executeQuery(query);
     }
 
-    private String performQuery (String query) {
+    public String executeQuery(String query) {
         final String txUri = SERVER_ROOT_URI + "transaction/commit";
         WebResource resource = Client.create().resource( txUri );
 
@@ -56,13 +56,9 @@ public class TestDao {
                 .entity(payload)
                 .post(ClientResponse.class);
 
-        String formatedResponse = String.format(
-                "POST [%s] to [%s], status code [%d], returned data: "
-                        + System.getProperty("line.separator") + "%s",
-                payload, txUri, response.getStatus(),
-                response.getEntity(String.class));
+        String stringResponse = response.getEntity(String.class);
 
         response.close();
-        return formatedResponse;
+        return stringResponse;
     }
 }

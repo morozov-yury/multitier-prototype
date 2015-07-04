@@ -1,17 +1,18 @@
 package mtp.view;
 
 import com.mtp.service.TestService;
+import com.mtp.utils.StringUtils;
 import com.mtp.utils.TimeUtils;
 import com.vaadin.cdi.CDIView;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewChangeListener;
+import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.*;
 import mtp.MtpUI;
 import org.apache.logging.log4j.Logger;
 
 import javax.ejb.EJB;
 import javax.inject.Inject;
-import java.util.Date;
 
 /**
  * Created by morozov.yury on 31.5.15.
@@ -32,6 +33,7 @@ public class MainView extends CustomComponent implements View {
     public MainView() {
         logLayout = new VerticalLayout() {{
             setSpacing(true);
+            setHeight("100%");
         }};
     }
 
@@ -75,18 +77,19 @@ public class MainView extends CustomComponent implements View {
 
             addComponent(new HorizontalLayout() {{
                 setSpacing(true);
-                setCaption("Selects all nodes with specified property name");
-                final TextField textField = new TextField();
-                textField.setInputPrompt("Input property name");
+                setCaption("Execure cypher query");
+                final TextArea queryField = new TextArea();
+                queryField.setInputPrompt("Input property name");
+                queryField.setValue("MATCH (n) RETURN n LIMIT 5");
 
                 addComponent(new Button("Select") {{
                     addClickListener(new ClickListener() {
                         @Override
                         public void buttonClick(ClickEvent event) {
-                            String propName = textField.getValue().trim();
-                            if (textField.getValue().trim().length() > 0) {
-                                String response = testService.getNodesWithProperty(propName, 25);
-                                pringLogMessage(response);
+                            String query = queryField.getValue().trim();
+                            if (queryField.getValue().trim().length() > 0) {
+                                String response = testService.executeCypherQuery(query);
+                                pringLogMessage(StringUtils.formatJSON(response));
                             } else {
                                 pringLogMessage("Text field shouldn't be null");
                             }
@@ -94,7 +97,7 @@ public class MainView extends CustomComponent implements View {
                     });
                 }});
 
-                addComponent(textField);
+                addComponent(queryField);
             }});
         }});
 
@@ -113,8 +116,11 @@ public class MainView extends CustomComponent implements View {
     }
 
     private void pringLogMessage (String message) {
-        message = TimeUtils.getCurrentTime() + ": " + message;
-        logLayout.addComponent(new Label(message), 0);
+        message = TimeUtils.getCurrentTime() + ": \n" + message;
+        logLayout.addComponent(new Label(message) {{
+            addStyleName("json_label");
+            setContentMode(ContentMode.PREFORMATTED);
+        }}, 0);
     }
 
 }

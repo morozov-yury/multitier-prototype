@@ -1,6 +1,6 @@
 package com.mtp.service;
 
-import com.mtp.dao.impl.TestDao;
+import com.mtp.dataaccess.dao.impl.TestDao;
 import org.apache.logging.log4j.Logger;
 
 import javax.ejb.EJB;
@@ -30,8 +30,8 @@ public class TestService implements Serializable {
         return testDao.testConnectionToDB();
     }
 
-    public String getNodesWithProperty(String propertyName, int limit) {
-        return testDao.getNodesWithProperty(propertyName, limit);
+    public String executeCypherQuery(String query) {
+        return testDao.executeQuery(query);
     }
 
 }
