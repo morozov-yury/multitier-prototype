@@ -13,7 +13,7 @@ import mtp.MtpUI;
  * Created by morozov.yury on 31.5.15.
  */
 @CDIView("admin")
-public class AdminView extends CustomComponent implements View {
+public class AdminView extends AbstractView {
 
     public static String NAME = "admin";
 

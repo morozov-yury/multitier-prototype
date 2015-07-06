@@ -18,7 +18,7 @@ import javax.inject.Inject;
  * Created by morozov.yury on 31.5.15.
  */
 @CDIView("")
-public class MainView extends CustomComponent implements View {
+public class MainView extends AbstractView {
 
     public static String NAME = "";
 
