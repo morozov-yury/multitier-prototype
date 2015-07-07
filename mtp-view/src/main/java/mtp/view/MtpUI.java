@@ -1,4 +1,4 @@
-package mtp;
+package mtp.view;
 
 import com.vaadin.annotations.Push;
 import com.vaadin.annotations.Theme;
@@ -6,9 +6,10 @@ import com.vaadin.annotations.Widgetset;
 import com.vaadin.cdi.CDIUI;
 import com.vaadin.cdi.CDIViewProvider;
 import com.vaadin.navigator.Navigator;
+import com.vaadin.navigator.ViewDisplay;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.ui.UI;
-import mtp.layout.MainMTPLayout;
+import mtp.view.layout.MainMTPLayout;
 
 import javax.inject.Inject;
 
@@ -32,9 +33,9 @@ public class MtpUI extends UI {
     @Override
     protected void init(VaadinRequest vaadinRequest) {
 
-        //setContent(mainLayout);
+        setContent(mainLayout);
 
-        navigator = new Navigator(this, mainLayout);
+        navigator = new Navigator(this, (ViewDisplay) mainLayout);
         navigator.addProvider(viewProvider);
         setNavigator(navigator);
         navigator.navigateTo("");

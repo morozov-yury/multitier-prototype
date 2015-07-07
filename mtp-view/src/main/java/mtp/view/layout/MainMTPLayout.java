@@ -1,9 +1,6 @@
-package mtp.layout;
+package mtp.view.layout;
 
-import com.vaadin.navigator.ViewDisplay;
-import com.vaadin.ui.AbstractLayout;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
 
 import javax.annotation.PostConstruct;
@@ -16,21 +13,28 @@ import java.io.Serializable;
  */
 @SessionScoped
 @Named
-public class MainMTPLayout extends AbstractMTPLayout implements Serializable {
+public class MainMTPLayout extends MTPLayout implements Serializable {
 
     private VerticalLayout viewHolder;
 
     public MainMTPLayout() {
-        viewHolder.addComponent(new Label("MainMTPLayout"));
+        setSizeFull();
+
+
+
+        viewHolder = new VerticalLayout();
+        viewHolder.setSizeFull();
+        addComponent(viewHolder);
     }
 
     @PostConstruct
     private void init () {
-        viewHolder = new VerticalLayout();
+
     }
 
     @Override
-    protected AbstractLayout getViewHolder() {
-        return viewHolder;
+    public void showView(Component component) {
+        viewHolder.removeAllComponents();
+        viewHolder.addComponent(component);
     }
 }
