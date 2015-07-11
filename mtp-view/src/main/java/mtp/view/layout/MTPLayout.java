@@ -3,12 +3,16 @@ package mtp.view.layout;
 import com.vaadin.navigator.View;
 import com.vaadin.navigator.ViewDisplay;
 import com.vaadin.ui.Component;
-import com.vaadin.ui.CustomLayout;
+import com.vaadin.ui.HorizontalLayout;
 
 /**
  * Created by morozov.yury on 6.7.15.
  */
-public abstract class MTPLayout extends CustomLayout implements ViewDisplay  {
+public abstract class MTPLayout extends HorizontalLayout implements ViewDisplay  {
+
+    public MTPLayout() {
+        setSizeFull();
+    }
 
     @Override
     public void showView(View view) {

@@ -1,16 +1,17 @@
-package mtp.view;
+package mtp.view.views;
 
 import com.vaadin.cdi.CDIView;
 import com.vaadin.navigator.ViewChangeListener;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Label;
 import com.vaadin.ui.VerticalLayout;
+import mtp.view.MtpUI;
 
 /**
  * Created by morozov.yury on 31.5.15.
  */
-@CDIView("admin")
-public class AdminView extends AbstractView {
+@CDIView("configuration")
+public class ConfigurationView extends AbstractView {
 
     public static String NAME = "admin";
 

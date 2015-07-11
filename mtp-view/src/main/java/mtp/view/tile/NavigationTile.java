@@ -1,10 +1,8 @@
 package mtp.view.tile;
 
-import com.vaadin.navigator.Navigator;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Component;
 import com.vaadin.ui.VerticalLayout;
-import mtp.view.MtpUI;
 import mtp.view.service.NavigationService;
 
 import javax.annotation.PostConstruct;
@@ -24,33 +22,27 @@ public class NavigationTile extends VerticalLayout implements Serializable {
     @Inject
     private NavigationService navigationService;
 
-    private Navigator navigator;
-
     public NavigationTile() {
-
+        setSizeUndefined();
     }
 
     @PostConstruct
     private void init() {
         Map<String, String> navigationRefs = navigationService.getNavigationRefs();
+        addComponent(getNavigationButton("Main page", ""));
         for (String entityTypeName : navigationRefs.keySet()) {
             Component navigationButton = getNavigationButton(entityTypeName, navigationRefs.get(entityTypeName));
             addComponent(navigationButton);
         }
+        addComponent(getNavigationButton("Configuration", ""));
     }
 
-    @Override
-    public void attach() {
-        super.attach();
-        navigator = MtpUI.getCurrent().getNavigator();
-    }
-
-    private Component getNavigationButton(String name, String ref) {
+    private Component getNavigationButton(String name, final String ref) {
         return new Button(name) {{
            addClickListener(new ClickListener() {
                @Override
                public void buttonClick(ClickEvent event) {
-                   navigator.navigateTo("ref");
+                   navigationService.navigateTo(ref);
                }
            });
         }};

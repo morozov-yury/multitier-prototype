@@ -1,4 +1,4 @@
-package mtp.view;
+package mtp.view.views;
 
 import com.vaadin.navigator.View;
 import com.vaadin.ui.CustomComponent;

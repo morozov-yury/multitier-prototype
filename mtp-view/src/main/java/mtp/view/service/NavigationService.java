@@ -1,12 +1,13 @@
 package mtp.view.service;
 
 import com.mtp.service.AccessService;
+import com.vaadin.ui.UI;
+import mtp.view.MtpUI;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ApplicationScoped;
 import java.io.Serializable;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -24,6 +25,19 @@ public class NavigationService implements Serializable {
                 put(entityTypeName, "list/" + entityTypeName);
             }
         }};
+    }
+
+    public String getMainPageRef() {
+        return "";
+    }
+
+    public void navigateTo (String ref) {
+        UI ui = MtpUI.getCurrent();
+        if (ui != null) {
+            ui.getNavigator().navigateTo(ref);
+        } else {
+//            throw new
+        }
     }
 
 }

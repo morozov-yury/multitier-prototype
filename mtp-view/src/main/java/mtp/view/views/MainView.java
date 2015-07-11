@@ -1,11 +1,8 @@
-package mtp.view;
+package mtp.view.views;
 
 import com.mtp.service.TestService;
-import com.mtp.utils.StringUtils;
-import com.mtp.utils.TimeUtils;
 import com.vaadin.cdi.CDIView;
 import com.vaadin.navigator.ViewChangeListener;
-import com.vaadin.shared.ui.label.ContentMode;
 import com.vaadin.ui.*;
 import mtp.view.tile.NavigationTile;
 import org.apache.logging.log4j.Logger;
@@ -27,9 +24,6 @@ public class MainView extends AbstractView {
     @Inject
     private Logger logger;
 
-    @Inject
-    private NavigationTile navigationTile;
-
     public MainView() {
 
     }
@@ -39,9 +33,6 @@ public class MainView extends AbstractView {
         final HorizontalLayout compositionRoot = new HorizontalLayout();
         setCompositionRoot(compositionRoot);
         compositionRoot.setSizeFull();
-        compositionRoot.setMargin(true);
-
-        compositionRoot.addComponent(navigationTile);
 
         compositionRoot.addComponent(new Label("MainView"));
 
