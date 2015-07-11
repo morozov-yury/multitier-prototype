@@ -8,4 +8,7 @@ import com.vaadin.ui.CustomComponent;
  */
 public abstract class AbstractView extends CustomComponent implements View {
 
+    public AbstractView() {
+        addStyleName("content-tile");
+    }
 }

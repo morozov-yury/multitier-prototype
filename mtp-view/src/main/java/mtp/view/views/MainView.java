@@ -30,12 +30,11 @@ public class MainView extends AbstractView {
 
     @Override
     public void enter(ViewChangeListener.ViewChangeEvent event) {
-        final HorizontalLayout compositionRoot = new HorizontalLayout();
+        final VerticalLayout compositionRoot = new VerticalLayout();
         setCompositionRoot(compositionRoot);
         compositionRoot.setSizeFull();
 
         compositionRoot.addComponent(new Label("MainView"));
-
     }
 
 }
