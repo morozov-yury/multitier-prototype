@@ -43,7 +43,7 @@ public class NavigationTile extends VerticalLayout implements Serializable {
             Component navigationButton = getNavigationButton(entityTypeName, navigationRefs.get(entityTypeName));
             addComponent(navigationButton);
         }
-        addComponent(getNavigationButton("Configuration", ""));
+        addComponent(getNavigationButton("Configuration", "configuration"));
     }
 
     private Component getNavigationButton(String name, final String ref) {
